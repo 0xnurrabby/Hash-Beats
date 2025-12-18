@@ -1,0 +1,35 @@
+{
+  "accountAssociation": {
+    "header": "TODO_REPLACE_BASE64_HEADER",
+    "payload": "TODO_REPLACE_BASE64_PAYLOAD",
+    "signature": "TODO_REPLACE_BASE64_SIGNATURE"
+  },
+  "miniapp": {
+    "version": "1",
+    "name": "Hash-Beats",
+    "homeUrl": "https://nurrabby.com/",
+    "iconUrl": "https://nurrabby.com/assets/icon-1024.png",
+    "splashImageUrl": "https://nurrabby.com/assets/splash-200.png",
+    "splashBackgroundColor": "#0B0B10",
+    "subtitle": "TxHash drum machine",
+    "description": "A glitchy sequencer where every onchain transaction hash becomes a unique beat on Base.",
+    "primaryCategory": "music",
+    "tags": [
+      "music",
+      "sequencer",
+      "glitch",
+      "base",
+      "farcaster"
+    ],
+    "canonicalDomain": "nurrabby.com",
+    "requiredChains": [
+      "eip155:8453"
+    ],
+    "requiredCapabilities": [
+      "actions.ready",
+      "wallet.getEthereumProvider"
+    ],
+    "imageUrl": "https://nurrabby.com/assets/embed-3x2.png",
+    "buttonTitle": "Launch Hash-Beats"
+  }
+}
