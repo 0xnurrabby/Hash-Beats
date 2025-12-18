@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0B0B10" />
+    <title>Hash-Beats</title>
+    <meta name="fc:miniapp" content='{"version":"1","imageUrl":"https://nurrabby.com/assets/embed-3x2.png","button":{"title":"Launch Hash-Beats","action":{"type":"launch_frame","name":"Hash-Beats","url":"https://nurrabby.com/","splashImageUrl":"https://nurrabby.com/assets/splash-200.png","splashBackgroundColor":"#0B0B10"}}}' />
+    <meta name="fc:frame" content='{"version":"1","imageUrl":"https://nurrabby.com/assets/embed-3x2.png","button":{"title":"Launch Hash-Beats","action":{"type":"launch_frame","name":"Hash-Beats","url":"https://nurrabby.com/","splashImageUrl":"https://nurrabby.com/assets/splash-200.png","splashBackgroundColor":"#0B0B10"}}}' />
+    <link rel="icon" href="/assets/icon-1024.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="top">
+        <div class="brand">
+          <div class="brand__title">Hash-Beats</div>
+          <div class="brand__subtitle">TxHash → Rhythm</div>
+        </div>
+        <div class="actions">
+          <button id="tipBtn" class="btn btn--primary">Tip (USDC)</button>
+          <button id="shareBtn" class="btn">Share</button>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="panel panel--input">
+          <div class="panel__title">Transaction Hash</div>
+          <div class="hashRow">
+            <input id="hashInput" class="hashInput" spellcheck="false" autocomplete="off" value="0x7a2b4c8d1e0f9a6b3c2d1e0f9a6b3c2d1e0f9a6b3c2d1e0f9a6b3c2d1e0f9a6b" />
+            <button id="randomBtn" class="btn">Random</button>
+          </div>
+          <div class="hint">0–9 = Kick · A–F = Snare · 64 steps from the hash characters (ignoring 0x)</div>
+        </section>
+
+        <section class="panel panel--sequencer">
+          <div class="panel__title">Sequencer</div>
+          <div id="grid" class="grid" aria-label="step sequencer"></div>
+          <div class="transport">
+            <button id="playBtn" class="btn btn--primary">Play</button>
+            <button id="stopBtn" class="btn">Stop</button>
+            <div class="knobGroup">
+              <label class="knobLabel">BPM</label>
+              <input id="bpm" type="range" min="60" max="180" value="120" />
+              <div id="bpmVal" class="mono">120</div>
+            </div>
+            <div class="knobGroup">
+              <label class="knobLabel">Swing</label>
+              <input id="swing" type="range" min="0" max="60" value="10" />
+              <div id="swingVal" class="mono">10%</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel panel--legend">
+          <div class="panel__title">Legend</div>
+          <div class="legend">
+            <div class="chip chip--kick">KICK</div>
+            <div class="chip chip--snare">SNARE</div>
+            <div class="chip chip--off">OFF</div>
+            <div class="chip chip--scan">SCAN</div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <div class="mono small">
+          Built for Base + Farcaster Mini Apps · No browser mode · <span id="ctxBadge">detecting…</span>
+        </div>
+      </footer>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+      <!-- Tip bottom-sheet -->
+      <div id="tipSheetBackdrop" class="sheetBackdrop" aria-hidden="true"></div>
+      <div id="tipSheet" class="sheet" aria-hidden="true" role="dialog" aria-label="Send a tip">
+        <div class="sheet__handle"></div>
+        <div class="sheet__title">Send a tip</div>
+        <div class="sheet__sub">USDC on Base Mainnet</div>
+
+        <div class="presetRow">
+          <button class="preset" data-usd="1">$1</button>
+          <button class="preset" data-usd="5">$5</button>
+          <button class="preset" data-usd="10">$10</button>
+          <button class="preset" data-usd="25">$25</button>
+        </div>
+
+        <div class="customRow">
+          <label class="mono small">Custom amount (USD)</label>
+          <input id="customUsd" class="customInput" inputmode="decimal" placeholder="e.g. 3.50" />
+        </div>
+
+        <div class="sheet__ctaRow">
+          <button id="sendTipBtn" class="btn btn--primary btn--wide">Send USDC</button>
+          <button id="closeTipBtn" class="btn btn--wide">Close</button>
+        </div>
+
+        <div class="sheet__fine mono small">
+          Recipient: <span id="recipientLabel"></span><br />
+          Builder attribution attached via ERC-8021 dataSuffix.
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
